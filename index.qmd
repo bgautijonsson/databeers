@@ -19,9 +19,9 @@ format:
 
 # Shiny
 
-## {background-iframe="https://bggj.is/sveitarfelog"}
+## {background-iframe="https://bggj.is/sveitarfelog" background-interactive="true"}
 
-## {background-iframe="https://bggj.is/skattagogn"}
+## {background-iframe="https://bggj.is/skattagogn" background-interactive="true"}
 
 # Databases
 
