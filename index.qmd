@@ -1,19 +1,26 @@
 ---
-title: "Databeers"
-author: 
-    -   name: "Brynjólfur Gauti Guðrúnar Jónsson"
-        url: "https://bggj.is"
-        affiliation: "Tölfræði, Raunvísindadeild Háskóla Íslands"
-        affiliation-url: "https://www.hi.is/tolfraedi_0"
+title: "You Can Handle the Truth"
+subtitle: "Empowering people to gain insight from official data"
+author: "Brynjólfur Gauti Guðrúnar Jónsson"
+institute: "Statistics Phd Student at HÍ<br>Statistician at Hjartavernd"
+header: " "
 format: 
     revealjs:
-        theme: default
+        theme: [default, custom.scss]
+        preload-iframes: true
+        vief-distance: 5
+        
 ---
 
-##  {background-iframe="https://bggj.shinyapps.io/sveitarfelog_maelabord" background-interactive="true"}
+## How it started
 
+## Quarto
 
-##  {background-iframe="https://bggj.shinyapps.io/skattagogn" background-interactive="true"}
+# Shiny
 
+## {background-iframe="https://bggj.is/sveitarfelog" background-interactive="true"}
 
+## {background-iframe="https://bggj.is/skattagogn" background-interactive="true"}
+
+## Databases
 
