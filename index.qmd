@@ -3,6 +3,7 @@ title: "You Can Handle the Truth"
 subtitle: "Empowering people to gain insight from official data"
 author: "Brynjólfur Gauti Guðrúnar Jónsson"
 institute: "Statistics Phd Student at HÍ<br>Statistician at Hjartavernd"
+footer: "[bggj.is/databeers](https://bggj.is/databeers){target='_blank'}"
 format: 
     revealjs:
         theme: custom.scss
@@ -12,6 +13,29 @@ format:
         loop: false
         auto-slide-stoppable: true
 ---
+
+```{r}
+#| include: false
+
+library(tidyverse)
+library(DBI)
+library(lubridate)
+library(config)
+library(ggthemes)
+library(cowplot)
+library(scales)
+library(plotly)
+library(visitalaneysluverds)
+
+usr <- config::get("postgres_user")
+con <- dbConnect(RPostgres::Postgres(), 
+                 dbname = usr$dbname, 
+                 host = usr$host,
+                 port = usr$port, 
+                 user = usr$username, 
+                 password = usr$password)
+```
+
 
 # How it started 
 
@@ -25,4 +49,91 @@ format:
 
 # Databases
 
- 
+## Tax data
+
+```{r}
+#| fig-width: 10
+#| fig-asp: 0.621
+#| out-width: "100%"
+
+
+d <- tbl(con, "tiundamork_1997_2021") |> 
+    filter(tiundarbreyta == "Heildartekjur",
+           name %in% c("Tekjur alls", 
+                       "Skattar alls",
+                       "Fjöldi í hóp")) |> 
+    collect() |> 
+    pivot_wider() |> 
+    rename(fjoldi = "Fjöldi í hóp") |> 
+    pivot_longer(c(-ar, -tiundarbreyta, -tiundarhluti, -fjoldi))
+
+
+
+plot_dat <- d |> 
+    group_by(ar, name) |> 
+    mutate(p = value / sum(value)) |> 
+    ungroup() |> 
+    select(-tiundarbreyta, -value) |> 
+    pivot_wider(names_from = name, values_from = p) |> 
+    janitor::clean_names() |> 
+    rename(tekjur_hlutf = tekjur_alls, skattar_hlutf = skattar_alls) |> 
+    inner_join(
+        d |> 
+            select(-tiundarbreyta) |> 
+            pivot_wider(names_from = name, values_from = value) |> 
+            janitor::clean_names(),
+        by = c("ar", "tiundarhluti", "fjoldi")
+    ) |> 
+    inner_join(
+        vnv() |> 
+            group_by(ar = year(date)) |> 
+            summarise(visitala = mean(cpi),
+                      .groups = "drop") |> 
+            mutate(visitala = visitala / visitala[ar == max(ar)]),
+        by = "ar"
+    ) |> 
+    mutate(tekjur_alls = tekjur_alls / visitala,
+           skattar_alls = skattar_alls / visitala) |> 
+    mutate(text = str_c("<b>Tekjutíund: ", tiundarhluti, "</b>", "\n",
+                        "Ár: ", ar, "\n",
+                        "Tekjur (á mann á mánuði): ", number(tekjur_alls * 1e6 / (fjoldi * 12), suffix = " kr", big.mark = ".", decimal.mark = ","), "\n",
+                        "% allra tekna: ", percent(tekjur_hlutf, accuracy = 0.1), "\n",
+                        "Skattar (á mann á mánuði): ", number(skattar_alls * 1e6 / (fjoldi * 12), suffix = " kr", big.mark = ".", decimal.mark = ","), "\n",
+                        "% allra skatta: ", percent(skattar_hlutf, accuracy = 0.1)))
+
+p <- plot_dat |> 
+    ggplot(aes(tekjur_hlutf, skattar_hlutf, 
+               frame = ar, text = text)) +
+    geom_abline(intercept = 0, slope = 1, lty = 2) +
+    geom_point() +
+    scale_x_continuous(labels = label_percent(),
+                       expand = expansion(),
+                       limits = c(min(plot_dat$skattar_hlutf), 0.5),
+                       breaks = seq(0, 50, by = 10)/100) +
+    scale_y_continuous(labels = label_percent(),
+                       expand = expansion(),
+                       limits = c(min(plot_dat$skattar_hlutf), 0.5),
+                       breaks = seq(0, 50, by = 10)/100) +
+    theme_half_open() +
+    theme(plot.margin = margin(t = 5, r = 5, b = 5, l = 5)) +
+    labs(x = "% af öllum tekjum",
+         y = "% af öllum sköttum",
+         title = "Hvað fær hver tekjutíund háa % af öllum tekjum og sköttum?")
+
+
+ggplotly(
+    p,
+    tooltip = "text"
+) |> 
+    animation_opts(
+        transition = 500,
+        easing = "cubic-in-out",
+        redraw = FALSE
+        
+    ) |> 
+    animation_slider(currentvalue = list(prefix = "Ár:")) |> 
+    layout(
+        hoverlabel = list(align = "left")
+    )
+```
+
