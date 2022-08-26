@@ -3,24 +3,26 @@ title: "You Can Handle the Truth"
 subtitle: "Empowering people to gain insight from official data"
 author: "Brynjólfur Gauti Guðrúnar Jónsson"
 institute: "Statistics Phd Student at HÍ<br>Statistician at Hjartavernd"
-header: " "
 format: 
     revealjs:
-        theme: [default, custom.scss]
+        theme: custom.scss
         preload-iframes: true
-        vief-distance: 5
-        
+        view-distance: 5
+        auto-slide: 20000
+        loop: false
+        auto-slide-stoppable: true
 ---
 
-## How it started
+# How it started 
 
-## Quarto
+# Quarto
 
 # Shiny
 
-## {background-iframe="https://bggj.is/sveitarfelog" background-interactive="true"}
+## {background-iframe="https://bggj.is/sveitarfelog"}
 
-## {background-iframe="https://bggj.is/skattagogn" background-interactive="true"}
+## {background-iframe="https://bggj.is/skattagogn"}
 
-## Databases
+# Databases
 
+ 
