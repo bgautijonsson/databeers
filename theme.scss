@@ -1,0 +1,68 @@
+/*-- scss:defaults --*/
+
+$darkblue:                      #08306b;
+$lightblue:                     #74a9cf;
+$white:                         #ffffff;
+
+
+$primary:                       $darkblue;
+$secondary:                     $white;
+
+
+
+$font-size-base:                1rem; 
+$font-family-base:              "Segoe UI";
+$font-family-sans-serif:        "Lato", "Open Sans", "Montserrat", "Roboto";
+$font-family-monospace:         "SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", "monospace";
+
+
+$headings-color:                $darkblue;
+$headings-font-weight:          4000;
+$headings-font-family:          "Segoe UI";
+
+
+$navbar-brand-font-size:        $font-size-base * 1.4;
+$navbar-brand-font-family:      "Playfair Display";
+$navbar-brand-font-weight:      700;
+
+
+$link-color:                    $lightblue;
+$link-color-hover:              $darkblue;
+
+
+/*-- scss:rules --*/
+
+.reveal h1 {
+    color: $primary;
+    font-family: "Playfair Display";
+    font-size: $font-size-base * 5.5;
+}
+
+.reveal h2 {
+    color: $primary;
+    font-family: "Playfair Display";
+    font-size: $font-size-base * 4;
+}
+
+.agenda {
+}
+
+.agenda-slide h1 {
+    size: 0em;
+    display: none;
+}
+
+.agenda-inactive {
+    font-size: $font-size-base * 4;
+    opacity: 0.25;
+    margin-top: -0.5em;
+    margin-bottom: -0.5em;
+}
+
+.agenda-active {
+    font-size: $font-size-base * 4;
+    color: $primary;
+    margin-top: -0.5em;
+    margin-bottom: -0.5em;
+}
+

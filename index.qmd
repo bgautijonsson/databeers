@@ -4,18 +4,25 @@ subtitle: "Empowering people to gain insight from official data"
 author: "Brynjólfur Gauti Guðrúnar Jónsson"
 institute: "Statistics Phd Student at HÍ<br>Statistician at Hjartavernd"
 footer: "[bggj.is/databeers](https://bggj.is/databeers){target='_blank'}"
+
 format: 
     revealjs:
-        theme: custom.scss
+        theme: theme.scss
         preload-iframes: true
         view-distance: 5
         auto-slide: 20000
         loop: false
         auto-slide-stoppable: true
+filters:
+    - reveal-auto-agenda
+execute: 
+  cache: true
+  echo: true
 ---
 
 ```{r}
 #| include: false
+#| cache: false
 
 library(tidyverse)
 library(DBI)
@@ -26,6 +33,7 @@ library(cowplot)
 library(scales)
 library(plotly)
 library(visitalaneysluverds)
+library(kableExtra)
 
 usr <- config::get("postgres_user")
 con <- dbConnect(RPostgres::Postgres(), 
@@ -36,18 +44,82 @@ con <- dbConnect(RPostgres::Postgres(),
                  password = usr$password)
 ```
 
+## {autoslide=10000}
 
-# How it started 
+::: {.r-stack}
 
-# Quarto
 
-# Shiny
+![](images/energy_production.gif){width="1000"}
 
-## {background-iframe="https://bggj.is/sveitarfelog" background-interactive="true"}
+![](images/cpi.gif){.fragment width="1000"}
 
-## {background-iframe="https://bggj.is/skattagogn" background-interactive="true"}
+:::
 
-# Databases
+# How it started
+
+## Statistics
+
+::: columns
+
+::: {.column width="50%"}
+![](images/Correlations_Pois_Infant.png)
+
+![](images/p_loo.png)
+:::
+
+::: {.column width="50%"}
+![](images/ms_thesis.png){height="550"}
+:::
+:::
+
+## COVID-19 {autoslide=5000}
+
+::: {.r-stack}
+
+![](images/covid_dashboard.png){width="1000"}
+
+![](images/stancon.png){.fragment width="1000"}
+
+![](images/covid_open1.png){.fragment width="600"}
+
+![](images/covid_open2.png){.fragment width="600"}
+
+:::
+
+## {background-iframe="files/index.html" background-interactive="true"}
+
+
+
+## Media
+
+::: columns
+
+::: {.column width="50%"}
+
+![](images/David_crop.jpg){height="300"}
+:::
+
+::: {.column width="50%"}
+
+![](images/uk_stats2.png){height="550"}
+
+:::
+
+:::
+
+# How it's going
+
+## Quarto
+
+## Shiny
+
+##  {background-iframe="https://bggj.is/sveitarfelog" background-interactive="true"}
+
+##  {background-iframe="https://bggj.is/skattagogn" background-interactive="true"}
+
+# Example
+
+## Workforce data
 
 ## Tax data
 
@@ -55,7 +127,7 @@ con <- dbConnect(RPostgres::Postgres(),
 #| fig-width: 10
 #| fig-asp: 0.621
 #| out-width: "100%"
-
+#| echo: false
 
 d <- tbl(con, "tiundamork_1997_2021") |> 
     filter(tiundarbreyta == "Heildartekjur",
@@ -136,4 +208,3 @@ ggplotly(
         hoverlabel = list(align = "left")
     )
 ```
-
