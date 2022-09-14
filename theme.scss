@@ -44,25 +44,7 @@ $link-color-hover:              $darkblue;
     font-size: $font-size-base * 4;
 }
 
-.agenda {
-}
-
-.agenda-slide h1 {
-    size: 0em;
-    display: none;
-}
-
-.agenda-inactive {
-    font-size: $font-size-base * 4;
-    opacity: 0.25;
-    margin-top: -0.5em;
-    margin-bottom: -0.5em;
-}
-
-.agenda-active {
-    font-size: $font-size-base * 4;
+.reveal strong {
     color: $primary;
-    margin-top: -0.5em;
-    margin-bottom: -0.5em;
 }
 
