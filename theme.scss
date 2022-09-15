@@ -10,7 +10,6 @@ $secondary:                     $white;
 
 
 $body-bg:                       $secondary;
-$link-color:                    $primary;
 
 $font-size-base:                1rem; 
 $font-family-base:              "Lato";
@@ -63,4 +62,7 @@ $link-color-hover:              $darkblue;
     color: #023047;
 }
 
-
+.reveal a {
+    color: $primary;
+    text-align: middle;
+}

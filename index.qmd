@@ -245,10 +245,10 @@ pxweb_get(
 
 ::: {.column width="50%"}
 
-* **bggj.is**
-* **patreon.com/bggj**
-* **Quarto.org**
-* **Random art**
+* [bggj.is](bggj.is)
+* [patreon.com/bggj](patreon.com/bggj)
+* [Quarto.org](Quarto.org)
+* **Randomized art**
 
 :::
 
@@ -260,5 +260,11 @@ pxweb_get(
 
 
 :::
+
+:::
+
+::: {style="text-align: center;"}
+
+[https://github.com/bgautijonsson/databeers](https://github.com/bgautijonsson/databeers){target="_blank" text-align="center"}
 
 :::
