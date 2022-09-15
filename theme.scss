@@ -9,6 +9,8 @@ $primary:                       $darkblue;
 $secondary:                     $white;
 
 
+$body-bg:                       $secondary;
+$link-color:                    $primary;
 
 $font-size-base:                1rem; 
 $font-family-base:              "Lato";
@@ -47,4 +49,18 @@ $link-color-hover:              $darkblue;
 .reveal strong {
     color: $primary;
 }
+
+.reveal p.subtitle {
+    color: #252525;
+    font-size: $font-size-base * 3;
+}
+
+.reveal p.author {
+    color: #023047;
+}
+
+.reveal p.institute {
+    color: #023047;
+}
+
 

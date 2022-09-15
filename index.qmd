@@ -10,7 +10,7 @@ format:
         slide-number: true
         preload-iframes: true
         view-distance: 5
-        # auto-slide: 20000
+        auto-slide: 20000
         loop: false
         auto-slide-stoppable: true
         auto-stretch: true
