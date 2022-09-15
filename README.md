@@ -1,36 +1,19 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# databeers
+# Databeers Reykjavík \#2
 
-<!-- badges: start -->
-<!-- badges: end -->
+This is the github repo for my [talk at Databeers \#2 from September
+16th 2022](https://bggj.is/databeers).
 
-The goal of databeers is to …
+The slides are made using [Quarto’s](Quarto.org) `revealjs` HTML output.
+Any custom theming can be found in the file `theme.scss`.
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+Checkout Reykjavík Databeers at [databeers.is](https://databeers.is)
 
-``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
-```
+<img src="images/databeers.png" data-fig-align="center" />
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this. You could also
-use GitHub Actions to re-render `README.Rmd` every time you push. An
-example workflow can be found here:
-<https://github.com/r-lib/actions/tree/v1/examples>.
+The attendees were graciously gifted beers by the nice and friendly
+people at
 
-You can also embed plots, for example:
-
-![](README_files/figure-gfm/pressure-1.png)<!-- -->
-
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub.
+<img src="images/keboola.png" data-fig-align="center" />
