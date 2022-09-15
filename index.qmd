@@ -35,6 +35,7 @@ library(visitalaneysluverds)
 library(kableExtra)
 library(pxweb)
 library(gt)
+library(feather)
 
 usr <- config::get("postgres_user")
 con <- dbConnect(RPostgres::Postgres(), 
@@ -116,52 +117,64 @@ bggj.is/pages/covid19
 :::
 :::
 
-## Trust
+## Calling Bullshit 
+
+![](images/callingbullshit.jpg){fig-align="center"}
+
+## Framing
+
+![](images/traffic.png){fig-align="center"}
+
+## Framing
+
+<br> 
+<br>
+
+$$
+\frac{9.000.000 \text{ hours}/\text{year}}{136.000 \text{ people}} \approx 66 \frac{\text{hours}/\text{year}}{\text{person}}
+$$
+
+$$
+\frac{66\text{ hours}/\text{year}}{365}   \times \frac{60 \text{ minutes}}{\text{hour}} \approx 11 \frac{\text{minutes}}{\text{year}}
+$$
+
+## Trustworthiness
 
 ::: columns
 
 ::: {.column width="50%"}
 
-**Claim** There has been a great decline in trust
+<br>
+<br>
 
-**Aim** We should have more trust
+**Open**
 
-**Task** We should rebuild trust
+**Accessible**
+
+**Intelligible**
+
+**Useable**
 
 :::
 
 ::: {.column width="50%"}
-![](images/onoraoneill.png){.absolute width=300 top=100 right=80}
+![](images/onoraoneill.png){.absolute width=350 top=150 right=105}
 
 :::
 :::
-
-## Uncertainty
-
-::: columns
-
-::: {.column width="50%"}
-:::
-
-::: {.column width="50%"}
-![](images/davidspiegelhalter.png){.absolute width=300 top=100 right=80}
-:::
-
-:::
-
-## What could things be like?
 
 # Examples
 
 ## Who pays the taxes? 
 
-![](images/fjarmalaraduneytid.png)
+![](images/fjarmalaraduneytid.png){fig-align="center"}
 
 ## What does the data say?
 
 
 ```{r}
 #| echo: false
+#| fig-align: center
 pxweb_get(
     url = "https://px.hagstofa.is:443/pxis/api/v1/is/Samfelag/lifskjor/5_skuldastada_heimili/1_skuldir_eignir/THJ09002.px",
     query = list(
@@ -201,9 +214,51 @@ pxweb_get(
     kable_classic(lightable_options = c("striped"), full_width = FALSE, font_size = 30)
 ```
 
+## The debts are too damn high!
+
+![](images/reykjavik.png){fig-align="center"}
+
+## What does the data say?
+
+![](images/reykjavik.gif){fig-align="center"}
+
+# My work
+
+##  {background-iframe="https://bggj.is/sveitarfelog" background-interactive="true"}
+
+##  {background-iframe="https://bggj.is/skattagogn" background-interactive="true"}
+
+## Landspítali
+
+![](images/landspitali.png){.absolute top=165 right=600 width=500}
+
+![](images/veikindahlutfall_null.png){.absolute top=200 right=-50 width=700}
+
+
+## CPI
+
+![](images/cpi.gif){fig-align="center"}
+
+## Thank you!
+
+::: columns
+
+::: {.column width="50%"}
+
+* **bggj.is**
+* **patreon.com/bggj**
+* **Quarto.org**
+* **Random art**
+
+:::
+
+::: {.column width="50%"}
 
 
 
+![](images/brbg_squares.png)
 
 
+:::
 
+:::
