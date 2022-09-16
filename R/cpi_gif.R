@@ -9,6 +9,79 @@ library(lubridate)
 library(plotly)
 Sys.setlocale(locale = "is_IS.UTF-8")
 
+title <- "#08306b"
+subtitle <- "#4A4C45"
+caption <- "#023047"
+
+axis_text <- "#4A4C45"
+axis_title <- "black"
+
+strip_background <- "#e0e0e0"
+background <- "#ffffff"
+
+
+
+
+main_font <- "Lato"
+axis_title_font <- NULL
+axis_line_col <- "#403d39"
+
+
+
+base_size <- 14
+
+theme_set(
+    theme(
+        text = element_text(family = main_font, size = base_size),
+        plot.title = element_text(
+            face = "bold",
+            colour = title,
+            size = base_size * 1.4,
+            hjust = 0,
+            margin = margin(t = 0, r = 0, b = 5, l = 0)
+        ),
+        plot.subtitle = element_text(
+            colour = subtitle,
+            size = base_size * 1,
+            hjust = 0,
+            margin = margin(t = 0, r = 0, b = 5, l = 5)
+        ),
+        plot.caption = element_text(
+            colour = caption,
+            hjust = 1,
+            size = 0.7 * base_size
+        ),
+        plot.caption.position = "panel",
+        panel.background = element_rect(fill = background, colour = NA),
+        plot.background = element_rect(fill = background, colour = NA),
+        panel.grid = element_blank(),
+        axis.title = element_text(
+            size = base_size ,
+            family = axis_title_font,
+            color = "black",
+            vjust = 1,
+            margin = margin(t = 0, r = 0, b = 0, l = 0)
+        ),
+        axis.text = element_text(
+            size = base_size * 0.7,
+            colour = axis_text
+        ),
+        axis.line = element_line(
+            colour = "black"
+        ),
+        # axis.line = element_blank(),
+        axis.ticks = element_line(
+            size = 0.6,
+            colour = axis_line_col
+        ),
+        strip.background = element_rect(
+            fill = strip_background,
+            colour = NA,
+        ),
+        plot.margin = margin(t = 5, r = 5, b = 5, l = 5)
+    )
+)
+
 d <- pxweb_get(
     url ="https://px.hagstofa.is:443/pxis/api/v1/is/Efnahagur/visitolur/1_vnv/2_undirvisitolur/VIS01301.px", 
     query = list(
@@ -134,7 +207,7 @@ text <- tibble(
     text = c(
         "Height is % price increase and width is % of expenses for average person\n(Sum of areas is change (%) in CPI)",
         "Stretch out all rectangles while keeping area fixed\n(Now rectangle width = 1, so area = height)",
-        "Stack the rectangles vertically\n(There's our CPI!)"
+        "Stack the rectangles vertically\n(There's our inflation!)"
     )
 )
 
@@ -157,8 +230,8 @@ plot_dat <- plot_dat1 |>
             state, 
             labels = c(
                 "Yearly % price increase by % of average person's expenses",
-                "Effect on yearly CPI inflation (equal weights)",
-                "Total yearly CPI inflation"
+                "Effect on yearly inflation (equal weights)",
+                "Total yearly inflation"
             )
         )
     )
@@ -176,25 +249,24 @@ p <- plot_dat |>
     scale_y_continuous(labels = label_percent(),
                        expand = expansion()) +
     scale_fill_brewer(type = "qual", palette = "Paired") +
-    theme_half_open() +
+    # theme_half_open() +
     theme(legend.position = "none",
-          plot.title = element_text(face = "bold"),
           plot.margin = margin(t = 5, r = 20, b = 5, l = 5)) +
     labs(x = "Weight (%)",
          y = "Price Increase / Effect on CPI (%)",
-         title = "CPI as an area",
+         title = "Inflation as an area",
          subtitle = "{closest_state}") +
     transition_states(state, wrap = T) +
     view_follow(fixed_y = T) +
     ease_aes("cubic-in-out")
 
 
-p
+# p
 
 
 p_vid <- animate(p, width = 8, height = 0.621 * 8, unit = "in", res = 150, fps = 25, duration = 12, end_pause = 10)
 
 
-p_vid
+# p_vid
 
 anim_save(filename = "images/cpi.gif", animation = p_vid)

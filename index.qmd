@@ -163,7 +163,6 @@ $$
 :::
 :::
 
-# Examples
 
 ## Who pays the taxes? 
 
@@ -222,7 +221,15 @@ pxweb_get(
 
 ![](images/reykjavik.gif){fig-align="center"}
 
-# My work
+## Size of the government workforce
+
+![](images/sa_1.png){.absolute top=120 left=0 width=500}
+
+![](images/sa_2.png){.absolute top=125 right=0 width=500}
+
+## 
+
+![](images/workforce.png){fig-align="center"}
 
 ##  {background-iframe="https://bggj.is/sveitarfelog" background-interactive="true"}
 
@@ -235,7 +242,7 @@ pxweb_get(
 ![](images/veikindahlutfall_null.png){.absolute top=200 right=-50 width=700}
 
 
-## CPI
+## Inflation
 
 ![](images/cpi.gif){fig-align="center"}
 
@@ -247,8 +254,8 @@ pxweb_get(
 
 * [bggj.is](bggj.is)
 * [patreon.com/bggj](patreon.com/bggj)
+* [@bggjonsson](twitter.com/bggjonsson))
 * [Quarto.org](Quarto.org)
-* **Randomized art**
 
 :::
 

@@ -100,7 +100,7 @@ d <- read_feather("files/arsreikningagogn.feather") |>
                        levels = c("value", "value_cpi"),
                        labels = c(
                            "Yearly numbers",
-                           "Adjusted for CPI"
+                           "Adjusted for inflation"
                        )
         ),
         name = fct_recode(
