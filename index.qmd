@@ -135,7 +135,7 @@ $$
 $$
 
 $$
-\frac{66\text{ hours}/\text{year}}{365}   \times \frac{60 \text{ minutes}}{\text{hour}} \approx 11 \frac{\text{minutes}}{\text{year}}
+\frac{66\text{ hours}/\text{year}}{365}   \times \frac{60 \text{ minutes}}{\text{hour}} \approx 11 \frac{\text{minutes}}{\text{day}}
 $$
 
 ## Trustworthiness
